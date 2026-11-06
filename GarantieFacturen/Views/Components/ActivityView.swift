@@ -1,5 +1,10 @@
 import SwiftUI
 
+struct DeelbaarBestand: Identifiable {
+    let id = UUID()
+    let url: URL
+}
+
 struct ActivityView: UIViewControllerRepresentable {
     let items: [Any]
 

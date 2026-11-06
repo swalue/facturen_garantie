@@ -6,8 +6,8 @@ struct InstellingenView: View {
     @Query private var facturen: [Factuur]
     @State private var driveService = iCloudDriveService.shared
     @State private var toonPicker = false
-    @State private var exportCSV: URL?
-    @State private var exportPDF: URL?
+    @State private var exportCSV: DeelbaarBestand?
+    @State private var exportPDF: DeelbaarBestand?
     @State private var dagenVanTevoren = NotificationService.shared.dagenVanTevoren()
 
     var body: some View {
@@ -39,14 +39,14 @@ struct InstellingenView: View {
             Section("Exporteren") {
                 Button {
                     if let url = ExportService.schrijfTijdelijkBestand(naam: "facturen.csv", inhoud: ExportService.facturenCSV(facturen)) {
-                        exportCSV = url
+                        exportCSV = DeelbaarBestand(url: url)
                     }
                 } label: {
                     Label("Facturen als CSV", systemImage: "square.and.arrow.up")
                 }
                 Button {
                     if let url = ExportService.pdfTijdelijkBestand(garanties: garanties) {
-                        exportPDF = url
+                        exportPDF = DeelbaarBestand(url: url)
                     }
                 } label: {
                     Label("Garantieoverzicht als PDF", systemImage: "square.and.arrow.up")
@@ -68,11 +68,11 @@ struct InstellingenView: View {
                 toonPicker = false
             }
         }
-        .sheet(item: $exportCSV) { url in
-            ActivityView(items: [url])
+        .sheet(item: $exportCSV) { bestand in
+            ActivityView(items: [bestand.url])
         }
-        .sheet(item: $exportPDF) { url in
-            ActivityView(items: [url])
+        .sheet(item: $exportPDF) { bestand in
+            ActivityView(items: [bestand.url])
         }
     }
 }
