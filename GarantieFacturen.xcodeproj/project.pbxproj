@@ -451,6 +451,7 @@
 /* Begin PBXProject section */
 		A3C028000000000000000052 /* Project object */ = 		{
 			isa = PBXProject;
+			buildConfigurationList = A3C028000000000000000047 /* Build configuration list for PBXProject */;
 			attributes = 			{
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1500;
