@@ -1,0 +1,10 @@
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcuserdatad/
+*.xccheckout
+*.xcscmblueprint
+xcuserdata/
+.DS_Store
+.swiftpm/
+Packages/
